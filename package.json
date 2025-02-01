@@ -1,0 +1,42 @@
+{
+  "name": "setup-pinia",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.14.0",
+  "description": "",
+  "author": "KazariEX",
+  "license": "MIT",
+  "repository": "KazariEX/setup-pinia",
+  "keywords": [],
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node",
+    "dev": "tsup-node --watch",
+    "prepack": "pnpm run build",
+    "release": "bumpp --no-push -c \"release: v%s\"",
+    "eslint": "eslint ."
+  },
+  "dependencies": {
+    "ts-macro": "^0.1.13"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.1.0",
+    "@types/node": "^22.13.0",
+    "@zinkawaii/eslint-config": "^0.1.10",
+    "@zinkawaii/stylelint-config": "^0.2.2",
+    "bumpp": "^10.0.1",
+    "eslint": "^9.19.0",
+    "stylelint": "^16.14.1",
+    "tsup": "^8.3.6"
+  }
+}
