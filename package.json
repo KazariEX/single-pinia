@@ -1,7 +1,7 @@
 {
   "name": "single-pinia",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@9.14.0",
   "description": "Write pinia at top level with export syntax",
   "author": "KazariEX",
