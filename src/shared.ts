@@ -1,0 +1,1 @@
+export const defaultPattern = /stores\/.*?\.(?:j|t)sx?$/;

@@ -7,6 +7,8 @@ export default antfu({
         ...zin.standard,
         ...zin.recommended,
         ...zin.stylistic,
-        ...zin.patch
+        ...zin.patch,
+        ...zin.vue,
+        "vue/prefer-import-from-vue": "off"
     }
 });

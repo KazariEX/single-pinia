@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`transform > ./fixtures/counter.ts 1`] = `
+"import { defineStore } from "pinia";
+import { ref } from "vue";
+
+export const useCounterStore = defineStore("counter", (helper) => {
+
+const count = ref(0);
+
+function increment() {
+    count.value++;
+}
+
+function decrement() {
+    count.value--;
+}
+return { count, increment, decrement, };
+});"
+`;

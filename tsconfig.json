@@ -10,6 +10,10 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "types": [
+      "node",
+      "vite/client"
+    ],
     "allowJs": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -20,6 +24,10 @@
     "skipLibCheck": true
   },
   "include": [
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+  ],
+  "exclude": [
+    "./test/fixtures/**/*.ts"
   ]
 }

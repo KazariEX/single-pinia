@@ -24,36 +24,36 @@ export function getNodeText(
     return ast.text.slice(start, end);
 }
 
-export function* collectVars(
+export function collectVars(
     ts: typeof import("typescript"),
     node: ts.Node,
     ast: ts.SourceFile
-): Generator<string> {
-    for (const id of collectIdentifiers(ts, node)) {
-        yield getNodeText(ts, id, ast);
-    }
+) {
+    return collectIdentifiers(ts, node, []).map((id) => getNodeText(ts, id, ast));
 }
 
-export function* collectIdentifiers(
+export function collectIdentifiers(
     ts: typeof import("typescript"),
-    node: ts.Node
-): Generator<ts.Node> {
+    node: ts.Node,
+    result: ts.Identifier[]
+) {
     if (ts.isIdentifier(node)) {
-        yield node;
+        result.push(node);
     }
     else if (ts.isObjectBindingPattern(node)) {
         for (const el of node.elements) {
-            collectIdentifiers(ts, el.name);
+            collectIdentifiers(ts, el.name, result);
         }
     }
     else if (ts.isArrayBindingPattern(node)) {
         for (const el of node.elements) {
             if (ts.isBindingElement(el)) {
-                collectIdentifiers(ts, el.name);
+                collectIdentifiers(ts, el.name, result);
             }
         }
     }
     else {
-        ts.forEachChild(node, (node) => collectIdentifiers(ts, node));
+        ts.forEachChild(node, (node) => collectIdentifiers(ts, node, result));
     }
+    return result;
 }

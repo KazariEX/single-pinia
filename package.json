@@ -3,45 +3,91 @@
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@9.14.0",
-  "description": "",
+  "description": "Write pinia at top level with setup syntax",
   "author": "KazariEX",
   "license": "MIT",
   "repository": "KazariEX/setup-pinia",
-  "keywords": [],
+  "keywords": [
+    "pinia",
+    "vue",
+    "ts-macro",
+    "unplugin"
+  ],
   "exports": {
     ".": {
-      "types": "./dist/unplugin/index.d.ts",
-      "import": "./dist/unplugin/index.js",
-      "require": "./dist/unplugin/index.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./ts-macro": {
-      "types": "./dist/ts-macro/index.d.ts",
       "import": "./dist/ts-macro/index.js",
       "require": "./dist/ts-macro/index.cjs"
+    },
+    "./esbuild": {
+      "import": "./dist/unplugin/esbuild.js",
+      "require": "./dist/unplugin/esbuild.cjs"
+    },
+    "./nuxt": {
+      "import": "./dist/unplugin/nuxt.js",
+      "require": "./dist/unplugin/nuxt.cjs"
+    },
+    "./rolldown": {
+      "import": "./dist/unplugin/rolldown.js",
+      "require": "./dist/unplugin/rolldown.cjs"
+    },
+    "./rollup": {
+      "import": "./dist/unplugin/rollup.js",
+      "require": "./dist/unplugin/rollup.cjs"
+    },
+    "./rspack": {
+      "import": "./dist/unplugin/rspack.js",
+      "require": "./dist/unplugin/rspack.cjs"
+    },
+    "./vite": {
+      "import": "./dist/unplugin/vite.js",
+      "require": "./dist/unplugin/vite.cjs"
+    },
+    "./webpack": {
+      "import": "./dist/unplugin/webpack.js",
+      "require": "./dist/unplugin/webpack.cjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsup-node",
-    "dev": "tsup-node --watch --sourcemap",
+    "dev": "tsup-node --watch",
     "prepack": "pnpm run build",
     "release": "bumpp --no-push -c \"release: v%s\"",
+    "test": "vitest",
     "eslint": "eslint ."
   },
   "dependencies": {
     "@vue/shared": "^3.5.13",
-    "ts-macro": "^0.1.13"
+    "ast-kit": "^1.4.0",
+    "magic-string-ast": "^0.7.0",
+    "ts-macro": "^0.1.13",
+    "unplugin": "^2.1.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.0",
+    "@nuxt/kit": "^3.15.4",
+    "@nuxt/schema": "^3.15.4",
+    "@sxzz/test-utils": "^0.4.0",
     "@types/node": "^22.13.0",
     "@zinkawaii/eslint-config": "^0.1.10",
     "@zinkawaii/stylelint-config": "^0.2.2",
     "bumpp": "^10.0.1",
     "eslint": "^9.19.0",
+    "rolldown": "1.0.0-beta.3",
+    "rollup": "^4.34.0",
     "stylelint": "^16.14.1",
-    "tsup": "^8.3.6"
+    "tsup": "^8.3.6",
+    "vite": "^6.0.11",
+    "vitest": "^3.0.4",
+    "webpack": "^5.97.1"
   }
 }

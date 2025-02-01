@@ -1,14 +1,18 @@
 import { type Code, createPlugin } from "ts-macro";
 import type { Mapping } from "@volar/language-core";
+import { defaultPattern } from "../shared";
 import { generateCodes } from "./generateCodes";
 import { parseInfo } from "./parseInfo";
+import type { Options } from "../types";
 
-const pattern = /stores\/.*?\.(?:j|t)sx?$/;
-
-export default createPlugin(({ ts }) => {
+export default createPlugin(({ ts }, options?: Options) => {
     return {
         name: "setup-pinia",
         resolveVirtualCode(virtualCode) {
+            const {
+                pattern = defaultPattern
+            } = options ?? {};
+
             const { ast, filePath } = virtualCode;
             if (!pattern.test(filePath)) {
                 return;
