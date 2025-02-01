@@ -7,7 +7,7 @@ import type { Options } from "../types";
 
 export default createPlugin(({ ts }, options?: Options) => {
     return {
-        name: "setup-pinia",
+        name: "single-pinia",
         resolveVirtualCode(virtualCode) {
             const {
                 pattern = defaultPattern

@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     app: {
         head: {
-            title: "Setup Pinia Playground"
+            title: "Single Pinia Playground"
         }
     },
     css: [

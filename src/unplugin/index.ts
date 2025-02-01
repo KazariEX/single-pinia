@@ -1,10 +1,10 @@
 import { createUnplugin } from "unplugin";
 import { defaultPattern } from "../shared";
-import { transformSetupPinia } from "./core";
+import { transformSinglePinia } from "./core";
 import type { Options } from "../types";
 
 const unplugin = createUnplugin<Options>((options) => ({
-    name: "setup-pinia",
+    name: "single-pinia",
     enforce: "pre",
     transformInclude(id) {
         const {
@@ -12,7 +12,7 @@ const unplugin = createUnplugin<Options>((options) => ({
         } = options ?? {};
         return pattern.test(id);
     },
-    transform: transformSetupPinia
+    transform: transformSinglePinia
 }));
 
 export default unplugin;

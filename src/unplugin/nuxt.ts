@@ -8,8 +8,8 @@ export interface ModuleOptions extends Options {}
 
 export default defineNuxtModule<ModuleOptions>({
     meta: {
-        name: "nuxt-setup-pinia",
-        configKey: "setupPinia",
+        name: "nuxt-single-pinia",
+        configKey: "singlePinia",
     },
     setup(options, _nuxt) {
         addVitePlugin(() => vite(options));

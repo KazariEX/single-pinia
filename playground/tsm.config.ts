@@ -1,7 +1,7 @@
-import setupPinia from "../src/ts-macro";
+import singlePinia from "../src/ts-macro";
 
 export default {
     plugins: [
-        setupPinia()
+        singlePinia()
     ]
 };

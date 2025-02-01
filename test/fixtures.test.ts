@@ -1,6 +1,6 @@
 import { testFixtures } from "@sxzz/test-utils";
 import { describe } from "vitest";
-import { transformSetupPinia } from "../src/unplugin/core";
+import { transformSinglePinia } from "../src/unplugin/core";
 
 describe("transform", async () => {
     await testFixtures(
@@ -9,6 +9,6 @@ describe("transform", async () => {
             query: "?raw",
             import: "default"
         }),
-        (_, id, code) => transformSetupPinia(code, id)?.code
+        (_, id, code) => transformSinglePinia(code, id)?.code
     );
 });

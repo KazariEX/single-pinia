@@ -1,12 +1,12 @@
 {
-  "name": "setup-pinia",
+  "name": "single-pinia",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@9.14.0",
-  "description": "Write pinia at top level with setup syntax",
+  "description": "Write pinia at top level with export syntax",
   "author": "KazariEX",
   "license": "MIT",
-  "repository": "KazariEX/setup-pinia",
+  "repository": "KazariEX/single-pinia",
   "keywords": [
     "pinia",
     "vue",

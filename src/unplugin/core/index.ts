@@ -3,7 +3,7 @@ import { babelParse, getLang, walkAST } from "ast-kit";
 import { generateTransform, MagicStringAST } from "magic-string-ast";
 import type t from "@babel/types";
 
-export function transformSetupPinia(code: string, id: string) {
+export function transformSinglePinia(code: string, id: string) {
     const lang = getLang(id);
     const program = babelParse(code, lang);
 
