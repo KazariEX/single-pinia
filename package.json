@@ -9,24 +9,29 @@
   "repository": "KazariEX/setup-pinia",
   "keywords": [],
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    ".": {
+      "types": "./dist/unplugin/index.d.ts",
+      "import": "./dist/unplugin/index.js",
+      "require": "./dist/unplugin/index.cjs"
+    },
+    "./ts-macro": {
+      "types": "./dist/ts-macro/index.d.ts",
+      "import": "./dist/ts-macro/index.js",
+      "require": "./dist/ts-macro/index.cjs"
+    }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsup-node",
-    "dev": "tsup-node --watch",
+    "dev": "tsup-node --watch --sourcemap",
     "prepack": "pnpm run build",
     "release": "bumpp --no-push -c \"release: v%s\"",
     "eslint": "eslint ."
   },
   "dependencies": {
+    "@vue/shared": "^3.5.13",
     "ts-macro": "^0.1.13"
   },
   "devDependencies": {

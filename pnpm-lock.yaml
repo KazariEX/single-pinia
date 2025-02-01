@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@vue/shared':
+        specifier: ^3.5.13
+        version: 3.5.13
       ts-macro:
         specifier: ^0.1.13
         version: 0.1.13(rollup@4.34.0)(typescript@5.7.3)
@@ -45,6 +48,9 @@ importers:
       pinia:
         specifier: ^2.3.1
         version: 2.3.1(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
+      setup-pinia:
+        specifier: workspace:^
+        version: link:..
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)

@@ -1,0 +1,23 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Client",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "autoAttachChildProcesses": true,
+      "args": [
+        "--folder-uri=file:///${workspaceRoot}/playground"
+      ],
+      "outFiles": [
+        "${workspaceRoot}/dist/*.js"
+      ],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "dev"
+      }
+    }
+  ]
+}

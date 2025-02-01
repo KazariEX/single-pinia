@@ -7,7 +7,8 @@ export default defineNuxtConfig({
         }
     },
     alias: {
-        "setup-pinia": fileURLToPath(new URL("../src/index.ts", import.meta.url))
+        "setup-pinia": fileURLToPath(new URL("../src/unplugin/index.ts", import.meta.url)),
+        "setup-pinia/ts-macro": fileURLToPath(new URL("../src/ts-macro/index.ts", import.meta.url))
     },
     css: [
         "~/assets/style.css"

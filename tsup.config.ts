@@ -2,7 +2,8 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
     entry: [
-        "./src/index.ts"
+        "./src/ts-macro/index.ts",
+        "./src/unplugin/index.ts"
     ],
     format: [
         "cjs",
