@@ -1,7 +1,9 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-defineStore("counter");
+defineStore("counter", {
+    persist: true
+});
 
 export const count = ref(0);
 
