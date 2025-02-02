@@ -1,1 +1,3 @@
-export const defaultPattern = /stores\/.*?\.(?:j|t)sx?$/;
+export const defaultIncludes = [
+    "stores/*.(c|m|)(j|t)s(x|)"
+];

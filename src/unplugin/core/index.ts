@@ -1,8 +1,8 @@
 import { camelize, capitalize } from "@vue/shared";
 import { babelParse, getLang, walkAST } from "ast-kit";
 import { generateTransform, MagicStringAST } from "magic-string-ast";
-import type t from "@babel/types";
 import { basename } from "pathe";
+import type t from "@babel/types";
 
 export function transformSinglePinia(code: string, id: string) {
     const lang = getLang(id);

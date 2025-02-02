@@ -1,20 +1,25 @@
+import picomatch from "picomatch";
 import { type Code, createPlugin } from "ts-macro";
 import type { Mapping } from "@volar/language-core";
-import { defaultPattern } from "../shared";
+import { defaultIncludes } from "../shared";
 import { generateCodes } from "./generateCodes";
 import { parseInfo } from "./parseInfo";
 import type { Options } from "../types";
 
 export default createPlugin(({ ts }, options?: Options) => {
+    const {
+        includes = defaultIncludes
+    } = options ?? {};
+
+    const filter = picomatch(includes, {
+        contains: true
+    });
+
     return {
         name: "single-pinia",
         resolveVirtualCode(virtualCode) {
-            const {
-                pattern = defaultPattern
-            } = options ?? {};
-
             const { ast, filePath } = virtualCode;
-            if (!pattern.test(filePath)) {
+            if (!filter(filePath)) {
                 return;
             }
 

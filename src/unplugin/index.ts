@@ -1,18 +1,26 @@
+import picomatch from "picomatch";
 import { createUnplugin } from "unplugin";
-import { defaultPattern } from "../shared";
+import { defaultIncludes } from "../shared";
 import { transformSinglePinia } from "./core";
 import type { Options } from "../types";
 
-const unplugin = createUnplugin<Options>((options) => ({
-    name: "single-pinia",
-    enforce: "pre",
-    transformInclude(id) {
-        const {
-            pattern = defaultPattern
-        } = options ?? {};
-        return pattern.test(id);
-    },
-    transform: transformSinglePinia
-}));
+const unplugin = createUnplugin<Options>((options) => {
+    const {
+        includes = defaultIncludes
+    } = options ?? {};
+
+    const filter = picomatch(includes, {
+        contains: true
+    });
+
+    return {
+        name: "single-pinia",
+        enforce: "pre",
+        transformInclude(id) {
+            return filter(id);
+        },
+        transform: transformSinglePinia
+    };
+});
 
 export default unplugin;

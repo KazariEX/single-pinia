@@ -70,6 +70,7 @@
     "ast-kit": "^1.4.0",
     "magic-string-ast": "^0.7.0",
     "pathe": "^2.0.2",
+    "picomatch": "^4.0.2",
     "ts-macro": "^0.1.13",
     "unimport": "^4.0.0",
     "unplugin": "^2.1.2"
@@ -80,6 +81,7 @@
     "@nuxt/schema": "^3.15.4",
     "@sxzz/test-utils": "^0.4.0",
     "@types/node": "^22.13.0",
+    "@types/picomatch": "^3.0.2",
     "@zinkawaii/eslint-config": "^0.1.10",
     "@zinkawaii/stylelint-config": "^0.2.2",
     "bumpp": "^10.0.1",
