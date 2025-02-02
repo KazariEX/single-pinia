@@ -81,7 +81,7 @@ export const useCounterStore = defineStore("counter", () => {
 
 This plugin mainly performs the following transformations:
 
-- Infers the name of the return value from store name.
+- Infers the name of the return value from file name.
 
 - Uses the variables or functions exported under the `defineStore` statement as the setup return values for this store.
 
