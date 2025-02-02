@@ -69,7 +69,9 @@
     "@vue/shared": "^3.5.13",
     "ast-kit": "^1.4.0",
     "magic-string-ast": "^0.7.0",
+    "pathe": "^2.0.2",
     "ts-macro": "^0.1.13",
+    "unimport": "^4.0.0",
     "unplugin": "^2.1.2"
   },
   "devDependencies": {
