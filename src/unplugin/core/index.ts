@@ -2,6 +2,7 @@ import { camelize, capitalize } from "@vue/shared";
 import { babelParse, getLang, walkAST } from "ast-kit";
 import { generateTransform, MagicStringAST } from "magic-string-ast";
 import type t from "@babel/types";
+import { basename } from "pathe";
 
 export function transformSinglePinia(code: string, id: string) {
     const lang = getLang(id);
@@ -11,6 +12,7 @@ export function transformSinglePinia(code: string, id: string) {
     const exportNames: string[] = [];
 
     let defined = false;
+    const name = basename(id).split(".")[0];
 
     for (const node of program.body) {
         if (
@@ -22,15 +24,13 @@ export function transformSinglePinia(code: string, id: string) {
             defined = true;
             const [arg0] = node.expression.arguments;
 
-            let id = "";
             let arg0End = 0;
             if (arg0?.type === "StringLiteral") {
-                id = arg0.value;
                 arg0End = arg0.end!;
             }
 
             s.appendLeft(node.start!, `export const use${
-                capitalize(camelize(id))
+                capitalize(camelize(name))
             }Store = `);
 
             s.prependLeft(arg0End, `, (helper) => {`);

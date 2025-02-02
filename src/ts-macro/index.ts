@@ -27,6 +27,7 @@ export default createPlugin(({ ts }, options?: Options) => {
                 ...info,
                 ts,
                 ast,
+                filePath,
                 getGeneratedLength: () => generatedLength,
                 linkedCodeMappings
             });

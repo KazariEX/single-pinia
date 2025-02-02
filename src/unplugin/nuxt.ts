@@ -26,34 +26,31 @@ export default defineNuxtModule<ModuleOptions>({
             ).map((dir) => resolve(nuxt.options.rootDir, dir));
         }
 
-        nuxt.hook("imports:dirs", (dirs) => {
-            for (const dir of storesDirs) {
-                const idx = dirs.indexOf(dir);
-                if (idx !== -1) {
-                    dirs.splice(idx, 1);
-                }
-            }
-        });
-
         const isIgnored = createIsIgnored(nuxt);
         nuxt.hook("imports:extend", async (imports) => {
-            const scannedImports = await scanDirExports(storesDirs, {
+            const options: ScanDirExportsOptions = {
                 fileFilter: (file) => !isIgnored(file)
+            };
+            const normalizedDirs = normalizeScanDirs(storesDirs, options);
+            const files = await scanFilesFromDir(normalizedDirs, options);
+
+            for (let i = 0; i < imports.length; i++) {
+                const item = imports[i];
+                if (files.includes(item.from)) {
+                    imports.splice(i, 1);
+                    i--;
+                }
+            }
+
+            const scannedImports = files.map<Import>((file) => {
+                const name = basename(file).split(".")[0];
+                return {
+                    from: file,
+                    name: `use${capitalize(camelize(name))}Store`
+                };
             });
+
             imports.push(...scannedImports);
         });
     }
 });
-
-async function scanDirExports(dirs: string[], options: ScanDirExportsOptions) {
-    const normalizedDirs = normalizeScanDirs(dirs, options);
-    const files = await scanFilesFromDir(normalizedDirs, options);
-
-    return files.map<Import>((file) => {
-        const name = basename(file).split(".")[0];
-        return {
-            from: file,
-            name: `use${capitalize(camelize(name))}Store`
-        };
-    });
-}

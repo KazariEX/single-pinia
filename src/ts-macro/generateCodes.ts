@@ -1,4 +1,5 @@
 import { camelize, capitalize } from "@vue/shared";
+import { basename } from "pathe";
 import { allCodeFeatures, type Code } from "ts-macro";
 import type { Mapping } from "@volar/language-core";
 import type ts from "typescript";
@@ -8,6 +9,7 @@ import type { ParsedInfo } from "./parseInfo";
 export interface GenerateCodesOptions extends ParsedInfo {
     ts: typeof ts;
     ast: ts.SourceFile;
+    filePath: string;
     getGeneratedLength: () => number;
     linkedCodeMappings: Mapping[];
 }
@@ -27,7 +29,7 @@ export function* generateCodes(options: GenerateCodesOptions): Generator<Code> {
 
     yield `export const use`;
     yield capitalize(camelize(
-        ast.text.slice(defineStore.arg0.start + 1, defineStore.arg0.end - 1)
+        basename(options.filePath).split(".")[0]
     ));
     yield `Store = `;
     yield [
